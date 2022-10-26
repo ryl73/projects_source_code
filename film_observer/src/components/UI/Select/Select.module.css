@@ -1,0 +1,55 @@
+.select__wrapper {
+    position: relative;
+}
+
+.currentSelect {
+    position: relative;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+}
+
+.currentSelect:after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border:  solid white;
+    border-width: 2px 0 0 2px;
+    transform: translate(-50%, -50%) rotate(-135deg);
+    position: absolute;
+    right: -20px;
+    top: 8px;
+}
+
+.select {
+    position: absolute;
+    z-index: 1;
+    width: 140px;
+    top: 25px;
+    left: -10px;
+    list-style-type: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.option {
+    background-color: #1f1f1f;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.option:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.option:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.option:hover {
+    background-color: #333;
+}

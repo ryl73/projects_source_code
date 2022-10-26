@@ -1,0 +1,58 @@
+.stars {
+    margin-top: 1rem;
+    position: relative;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    display: inline-block;
+}
+
+.stars:before {
+    content: "★★★★★★★★★★";
+    display: block;
+    color: rgba(51, 51, 51, .6);
+}
+
+.stars__items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row-reverse;
+    overflow: hidden;
+}
+
+.stars__item {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.stars__label {
+    flex: 0 0 10%;
+    height: 100%;
+    cursor: pointer;
+    color: rgba(51, 51, 51, .6);
+}
+
+.stars__label:before {
+    content: "★";
+    display: block;
+    transition: color .3s ease 0s;
+}
+
+.stars__item:checked,
+.stars__item:checked ~ .stars__label {
+    color: #c55b2a;
+}
+
+.stars__label:hover,
+.stars__label:hover ~ .stars__label,
+.stars__label:checked ~ .stars__label:hover {
+    color: #c55b2a;
+}

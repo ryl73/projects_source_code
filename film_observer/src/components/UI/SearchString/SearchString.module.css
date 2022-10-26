@@ -1,0 +1,64 @@
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.icon path {
+    fill: rgba(211, 211, 211, .7);
+}
+
+.input__wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.input {
+    position: relative;
+    padding: 10px 15px;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 5px;
+    outline: none;
+    transition: all .3s ease-in-out;
+}
+
+.input:focus {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.icon:hover path {
+    fill: white;
+}
+
+.input__dropDown {
+    position: absolute;
+    top: 54px;
+    font-size: 16px;
+    background-color: #333;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all .3s ease-in-out;
+}
+
+.input__dropDown::-webkit-scrollbar {
+    width: 10px;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+}
+
+.input__dropDown::-webkit-scrollbar-thumb {
+    background-color: #c55b2a;
+    border-radius: 5px;
+}
+
+.nothingFound {
+    font-weight: 300;
+    margin: 0 15px 20px 15px;
+}

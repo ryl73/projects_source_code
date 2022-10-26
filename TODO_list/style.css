@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    min-width: 250px;
+    background: linear-gradient(90deg, #87ea5c,#e7aa34,#ef7270);
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+}
+#loader {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-image: url("/icons/refresh-free-icon-font.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    right: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: loading 2s infinite;
+}
+
+#content {
+    opacity: 0;
+}
+/* Remove margins and padding from the list */
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+ul li {
+    overflow-wrap: break-word;
+    animation: slideLi .5s;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 50px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+    background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+/* Style the close button */
+.close {
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 30px;
+    width: 30px;
+    background-color: #f44336;
+    background-image: url("/icons/trash-free-icon-font.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: .2s linear;
+}
+
+.close:hover {
+    background-color: #541c0f;
+}
+
+/* Style the header */
+.header {
+    padding: 30px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom:10px;
+}
+
+.date {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.day {
+    background: #ffffff;
+    color: #000;
+    width: 33%;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.day.active {
+    background: #d9d9d9;
+}
+
+/* Style the input */
+input {
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.addBtn:hover {
+    background-color: #bbb;
+}
+
+.hiddenItems {
+    display: none;
+}
+
+@keyframes deleteBtnAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+@keyframes deleteBtnDisappear {
+    from {
+        opacity: 100;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideLi {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 100;
+    }
+}
+
+@keyframes deleteLi {
+    from {
+        opacity: 100;
+    }
+
+    to {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

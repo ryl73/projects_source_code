@@ -1,0 +1,27 @@
+.filmCardList {
+    display: flex;
+    flex-flow: column;
+    margin: 10px 0;
+}
+
+.filmCard {
+    display: flex;
+    flex-flow: row;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.filmCard:hover {
+    background-color: #1f1f1f;
+}
+
+.filmPoster {
+    height: 60px;
+    width: 40px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.filmDescription {
+    font-weight: 300;
+}
