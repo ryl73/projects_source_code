@@ -5,6 +5,7 @@ export function usePosts (limit) {
     const posts = ref([]);
     const totalPages = ref(0);
     const isPostsLoading = ref(true);
+
     const fetching = async () => {
         try {
             const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`, {
