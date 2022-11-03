@@ -34,8 +34,8 @@ function App() {
             display: 'block',
             width: '',
             height: '',
-            top: e.clientY,
-            left: e.clientX
+            top: e.pageY,
+            left: e.pageX
         })
         setIsBtnDisabled(true);
     }
@@ -108,6 +108,7 @@ function App() {
         };
         markups.push(markup);
         markupsJSON = JSON.stringify(markups);
+        alert(markupsJSON);
         console.log(markupsJSON);
         markupId++;
         setIsBtnDisabled(true);
