@@ -25,7 +25,6 @@ function App() {
         height: ''
     })
 
-    const rect = createRef<HTMLDivElement>();
     const imgRef = createRef<HTMLDivElement>();
 
     function drawStart(e: React.MouseEvent) {
@@ -45,8 +44,8 @@ function App() {
         if (isDrawing) {
             setRectStyles({
                 ...rectStyles,
-                width: Math.abs(e.clientX - Number(rectStyles.left)),
-                height: Math.abs(e.clientY - Number(rectStyles.top))
+                width: Math.abs(e.pageX - Number(rectStyles.left)),
+                height: Math.abs(e.pageY - Number(rectStyles.top))
             })
             setIsBtnDisabled(false);
         }
@@ -131,9 +130,8 @@ function App() {
                 {/*<img className="img" src={img} alt="No img" />*/}
                 <div
                     style={rectStyles}
-                    ref={rect}
                     id="rect"
-                ></div>
+                />
             </div>
             <button disabled={isBtnDisabled} className="addBtn" onClick={createJSON}>Добавить</button>
         </div>
