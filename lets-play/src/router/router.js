@@ -22,6 +22,21 @@ const routes = [
     component: GamePage,
     props: { type: "thisWeek" },
   },
+  {
+    path: "/discover/next-week",
+    component: GamePage,
+    props: { type: "nextWeek" },
+  },
+  {
+    path: "/discover/release-calendar",
+    component: GamePage,
+    props: { type: "calendar" },
+  },
+  {
+    path: "/discover/best-of-year",
+    component: GamePage,
+    props: { type: "bestOfYear" },
+  },
 ];
 
 const router = createRouter({

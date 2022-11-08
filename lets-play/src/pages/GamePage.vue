@@ -7,20 +7,26 @@
     <h1 v-if="type === 'review'" class="page__title">Reviews</h1>
     <h1 v-if="type === '30days'" class="page__title">Last 30 days</h1>
     <h1 v-if="type === 'thisWeek'" class="page__title">This week</h1>
-    <card-list :data="data" :type="type" />
-    <!--    <div v-intersection="loadMoreData" class="observer" />-->
+    <items-list :data="data" :type="type" />
+    <div v-intersection="loadMoreData" class="observer" />
   </div>
 </template>
 
 <script>
-import CardList from "@/components/CardList";
-import { useFetching } from "@/hooks/useFetching";
+import axios from "axios";
+import ItemsList from "@/components/ItemsList";
 
 export default {
   name: "GamePage",
-  components: { CardList },
+  components: { ItemsList },
   data() {
-    return {};
+    return {
+      data: [],
+      page: 1,
+      totalPages: 0,
+      limit: 20,
+      isDataLoading: false,
+    };
   },
   props: {
     type: {
@@ -28,89 +34,149 @@ export default {
       required: true,
     },
   },
-  setup(props) {
-    const { data, totalPages, isDataLoading } = useFetching(20, props.type);
-    console.log(props.type);
-
-    return {
-      data,
-      totalPages,
-      isDataLoading,
-    };
-  },
   methods: {
-    showProps() {
-      console.log("111");
+    async fetchData() {
+      let response = {};
+      try {
+        switch (this.type) {
+          case "home":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "review":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/comments`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "30days":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "thisWeek":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+        }
+        this.totalPages = Math.ceil(
+          response.headers["x-total-count"] / this.limit
+        );
+        this.data = response.data;
+      } catch (e) {
+        alert("Ошибка");
+      } finally {
+        this.isDataLoading = false;
+      }
     },
-    // async loadMoreData() {
-    //   try {
-    //     this.page++;
-    //     let response = {};
-    //     switch (this.type) {
-    //       case "home":
-    //         {
-    //           response = await axios.get(
-    //             `https://jsonplaceholder.typicode.com/photos`,
-    //             {
-    //               params: {
-    //                 _page: this.page,
-    //                 _limit: this.limit,
-    //               },
-    //             }
-    //           );
-    //         }
-    //         break;
-    //       case "review":
-    //         {
-    //           response = await axios.get(
-    //             `https://jsonplaceholder.typicode.com/comments`,
-    //             {
-    //               params: {
-    //                 _page: this.page,
-    //                 _limit: this.limit,
-    //               },
-    //             }
-    //           );
-    //         }
-    //         break;
-    //       case "30days":
-    //         {
-    //           response = await axios.get(
-    //             `https://jsonplaceholder.typicode.com/photos`,
-    //             {
-    //               params: {
-    //                 _page: this.page,
-    //                 _limit: this.limit,
-    //               },
-    //             }
-    //           );
-    //         }
-    //         break;
-    //       case "lastWeek":
-    //         {
-    //           response = await axios.get(
-    //             `https://jsonplaceholder.typicode.com/photos`,
-    //             {
-    //               params: {
-    //                 _page: this.page,
-    //                 _limit: this.limit,
-    //               },
-    //             }
-    //           );
-    //         }
-    //         break;
-    //     }
-    //     this.totalPages = Math.ceil(
-    //       response.headers["x-total-count"] / this.limit
-    //     );
-    //     this.data = [...this.data, ...response.data];
-    //   } catch (e) {
-    //     alert("Ошибка");
-    //   }
-    // },
+    async loadMoreData() {
+      try {
+        this.page++;
+        let response = {};
+        switch (this.type) {
+          case "home":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "review":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/comments`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "30days":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+          case "thisWeek":
+            {
+              response = await axios.get(
+                `https://jsonplaceholder.typicode.com/photos`,
+                {
+                  params: {
+                    _page: this.page,
+                    _limit: this.limit,
+                  },
+                }
+              );
+            }
+            break;
+        }
+        this.totalPages = Math.ceil(
+          response.headers["x-total-count"] / this.limit
+        );
+        this.data = [...this.data, ...response.data];
+      } catch (e) {
+        alert("Ошибка");
+      }
+    },
   },
   mounted() {
-    this.showProps();
+    this.fetchData();
+  },
+  watch: {
+    type() {
+      this.page = 1;
+      this.fetchData();
+    },
   },
 };
 </script>

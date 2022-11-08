@@ -1,0 +1,31 @@
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 21px;
+    border-radius: 10px;
+    background-color: #FFD748;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #104987;
+    cursor: pointer;
+}
+
+.slider__items {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+
+    font-family: 'Calibri', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: center;
+}

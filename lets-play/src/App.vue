@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
-import SideMenu from "@/components/SideMenu";
+import Navbar from "@/pages/Navbar";
+import SideMenu from "@/pages/SideMenu";
 export default {
   components: { SideMenu, Navbar },
 };

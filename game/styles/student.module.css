@@ -1,0 +1,121 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window {
+    position: relative;
+}
+
+.items__wrapper {
+    display: flex;
+    height: 300px;
+    flex-flow: row;
+    margin-bottom: 51px;
+}
+
+.orderAscending{
+    font-family: 'Calibri', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #FFFFFF;
+    -webkit-text-stroke: 2px #242546;
+
+    position: relative;
+    margin-bottom: 23px;
+}
+
+.orderAscending:after {
+    content: url("../assets/Arrow.svg");
+    position: absolute;
+    top: -9px;
+    left: 0;
+}
+
+.orderDescending {
+    font-family: 'Calibri', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #FFFFFF;
+    -webkit-text-stroke: 2px #242546;
+
+    position: relative;
+    text-align: right;
+    margin-bottom: 23px;
+}
+
+.orderDescending:after {
+    content: url("../assets/Arrow.svg");
+    position: absolute;
+    top: -21px;
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.item {
+    height: 157px;
+    position: absolute;
+    width: 158px;
+    background-image: url("../assets/items/Burger.svg");
+}
+
+.item p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Calibri', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 68px;
+    letter-spacing: 2px;
+
+    color: #FFFFFF;
+
+    -webkit-text-stroke: 3px #242546;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+
+    width: 886px;
+    height: 222px;
+
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    border: 15px solid transparent;
+
+    background-color: rgba(255, 255, 255, 0.7);
+
+    background-image: url("../assets/tables/Mask group.svg"),
+                      radial-gradient(238.96% 238.96% at 50% 54.28%, #FAF9F9 0%, #C09F9B 100%),
+                      radial-gradient(51.3% 817.07% at 46.28% 46.11%, #F2E6FA 0%, rgba(156, 154, 103, 0) 100%);
+    background-origin: border-box;
+    background-clip: border-box, content-box, border-box;
+}
+
+.items__cells {
+    padding: 0 52px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cell {
+    width: 131px;
+    height: 131px;
+    background-color: rgba(0, 0, 0, .06);
+    box-shadow: inset 0 4px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+}
+
