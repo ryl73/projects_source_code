@@ -16,7 +16,6 @@
       <section class="section">
         <p>Есть ли у вас зарплатная карта?</p>
         <v-switch
-            inset
             hide-details
             density="compact"
             inline
@@ -31,17 +30,20 @@
           <v-text-field
               label="Стоимость жилья"
               v-model="housingCost"
-              suffix="&#8381"
+              prefix="&#8381"
               type="number"
+              theme="dark"
               required
               :rules="housingCostRules"
+              hide-details="auto"
+              variant="outlined"
           />
           <v-slider
               v-model="housingCost"
               :min="minHousingCost"
               :max="maxHousingCost"
               :step="stepHousingCost"
-              color="red"
+              color="red-darken-3"
               hide-details
           />
           <div class="slider__labels">
@@ -57,10 +59,14 @@
           <v-text-field
               label="Первоначальный взнос"
               v-model="initialFee"
-              suffix="&#8381"
+              prefix="&#8381"
               type="number"
+              theme="dark"
               required
+              color="white"
               :rules="initialFeeRules"
+              hide-details="auto"
+              variant="outlined"
           />
           <v-slider
               v-model="initialFee"
@@ -84,9 +90,12 @@
               label="Срок кредита"
               v-model="creditTerm"
               suffix="лет"
+              theme="dark"
               type="number"
               :rules="creditTermRules"
               required
+              hide-details="auto"
+              variant="outlined"
           />
           <v-slider
               v-model="creditTerm"
@@ -105,7 +114,7 @@
       </div>
 
       <div class="section">
-        <v-btn @click="validate">
+        <v-btn @click="validate" block>
           Рассчитать кредит
         </v-btn>
       </div>
@@ -206,10 +215,11 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  color: #FFF;
 }
 
 .container {
-  background-color: lightgray;
+  background-color: #1f1f1f;
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
