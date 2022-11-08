@@ -1,96 +1,118 @@
 <template>
+  <div class="container">
     <v-form class="form" ref="form" v-model="valid">
-      <v-select
-          label="Цель кредита"
-          v-model="creditGoal"
-          :items="goalItems"
-          item-title="name"
-          item-value="value"
-          return-object
-          hide-details
-      />
+      <div class="section">
+        <v-select
+            label="Цель кредита"
+            v-model="creditGoal"
+            :items="goalItems"
+            item-title="name"
+            item-value="value"
+            return-object
+            hide-details
+        />
+      </div>
 
       <section class="section">
-        <h2>Есть ли у вас зарплатная карта?</h2>
-        <v-switch :label="isSalaryCard ? 'Да' : 'Нет'" inset hide-details color="red" v-model="isSalaryCard"/>
+        <p>Есть ли у вас зарплатная карта?</p>
+        <v-switch
+            inset
+            hide-details
+            density="compact"
+            inline
+            color="red"
+            v-model="isSalaryCard"
+            style="justify-items: flex-end"
+        />
       </section>
 
-      <div class="inputs">
-        <v-text-field
-            label="Стоимость жилья"
-            v-model="housingCost"
-            suffix="&#8381"
-            type="number"
-            required
-            :rules="housingCostRules"
-        />
-        <v-slider
-            v-model="housingCost"
-            :min="minHousingCost"
-            :max="maxHousingCost"
-            :step="stepHousingCost"
-            color="red"
-            hide-details
-        />
-        <div class="slider__labels">
-          <p>{{this.minHousingCost / 1e6}} млн &#8381</p>
-          <p>{{(this.maxHousingCost / 2) / 1e6}} млн &#8381</p>
-          <p>{{this.maxHousingCost / 1e6}} млн &#8381</p>
+      <div class="section">
+        <div class="inputs">
+          <v-text-field
+              label="Стоимость жилья"
+              v-model="housingCost"
+              suffix="&#8381"
+              type="number"
+              required
+              :rules="housingCostRules"
+          />
+          <v-slider
+              v-model="housingCost"
+              :min="minHousingCost"
+              :max="maxHousingCost"
+              :step="stepHousingCost"
+              color="red"
+              hide-details
+          />
+          <div class="slider__labels">
+            <p>{{this.minHousingCost / 1e6}} млн &#8381</p>
+            <p>{{(this.maxHousingCost / 2) / 1e6}} млн &#8381</p>
+            <p>{{this.maxHousingCost / 1e6}} млн &#8381</p>
+          </div>
         </div>
       </div>
 
-      <div class="inputs">
-        <v-text-field
-            label="Первоначальный взнос"
-            v-model="initialFee"
-            suffix="&#8381"
-            type="number"
-            required
-            :rules="initialFeeRules"
-        />
-        <v-slider
-            v-model="initialFee"
-            :min="minInitialFee"
-            :max="maxInitialFee"
-            :step="stepInitialFee"
-            color="red"
-            hide-details
-        />
-        <div class="slider__labels">
-          <p>{{this.minInitialFee / 1e6}} млн &#8381</p>
-          <p>{{(this.maxInitialFee / 2) / 1e6}} млн &#8381</p>
-          <p>{{this.maxInitialFee / 1e6}} млн &#8381</p>
+      <div class="section">
+        <div class="inputs">
+          <v-text-field
+              label="Первоначальный взнос"
+              v-model="initialFee"
+              suffix="&#8381"
+              type="number"
+              required
+              :rules="initialFeeRules"
+          />
+          <v-slider
+              v-model="initialFee"
+              :min="minInitialFee"
+              :max="maxInitialFee"
+              :step="stepInitialFee"
+              color="red"
+              hide-details
+          />
+          <div class="slider__labels">
+            <p>{{this.minInitialFee / 1e6}} млн &#8381</p>
+            <p>{{(this.maxInitialFee / 2) / 1e6}} млн &#8381</p>
+            <p>{{this.maxInitialFee / 1e6}} млн &#8381</p>
+          </div>
         </div>
       </div>
 
-      <div class="inputs">
-        <v-text-field
-            label="Срок кредита"
-            v-model="creditTerm"
-            suffix="лет"
-            type="number"
-            :rules="creditTermRules"
-            required
-        />
-        <v-slider
-            v-model="creditTerm"
-            :min="minCreditTerm"
-            :max="maxCreditTerm"
-            :step="stepCreditTerm"
-            color="red"
-            hide-details
-        />
-        <div class="slider__labels">
-          <p>{{this.minCreditTerm}} год</p>
-          <p>{{(this.maxCreditTerm / 2)}} лет</p>
-          <p>{{this.maxCreditTerm}} лет</p>
+      <div class="section">
+        <div class="inputs">
+          <v-text-field
+              label="Срок кредита"
+              v-model="creditTerm"
+              suffix="лет"
+              type="number"
+              :rules="creditTermRules"
+              required
+          />
+          <v-slider
+              v-model="creditTerm"
+              :min="minCreditTerm"
+              :max="maxCreditTerm"
+              :step="stepCreditTerm"
+              color="red"
+              hide-details
+          />
+          <div class="slider__labels">
+            <p>{{this.minCreditTerm}} год</p>
+            <p>{{(this.maxCreditTerm / 2)}} лет</p>
+            <p>{{this.maxCreditTerm}} лет</p>
+          </div>
         </div>
       </div>
 
-      <v-btn @click="validate">
-        Рассчитать кредит
-      </v-btn>
+      <div class="section">
+        <v-btn @click="validate">
+          Рассчитать кредит
+        </v-btn>
+      </div>
+
     </v-form>
+  </div>
+
   <table-modal v-model:show="modalVisible">
     <credit-table
         :credit-percent="creditGoal.value"
@@ -179,30 +201,28 @@ export default {
   box-sizing: border-box;
 }
 
-#app {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.container {
+  background-color: lightgray;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 30px;
+  height: 100vh
 }
 
 .section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 30px;
 }
 
 .inputs {
-  display: flex;
-  flex-direction: column;
   width: 100%;
 }
 
