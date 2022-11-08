@@ -61,6 +61,10 @@ export default {
       type: Boolean,
       required: true,
     },
+    salaryCardBonus: {
+      type: Number,
+      required: true,
+    }
   },
   data() {
     return {
@@ -81,10 +85,12 @@ export default {
         this.data.push(dataItem);
       }
     },
+
     setInterestRate() {
-      if (this.isSalaryCard) this.interestRate -= 0.3;
-      else this.interestRate += 0.3;
+      if (this.isSalaryCard) this.interestRate -= this.salaryCardBonus;
+      else this.interestRate += this.salaryCardBonus;
     },
+
     setAnnuityPayment() {
       const monthRate = this.interestRate/ (12 * 100);
       this.data[0].annuityPayment = -(this.housingCost - this.initialFee);
@@ -93,6 +99,7 @@ export default {
             ((monthRate) / (1 - (1 + monthRate) ** (-this.data.length)))).toFixed(2);
       }
     },
+
     setPayment() {
       const monthRate = this.interestRate/ (12 * 100);
       this.data[0].balance = (this.housingCost - this.initialFee);
@@ -116,7 +123,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

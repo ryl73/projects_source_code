@@ -129,6 +129,7 @@
         :housing-cost="housingCost"
         :initial-fee="initialFee"
         :credit-term="creditTerm"
+        :salaryCardBonus="salaryCardBonus"
     />
   </table-modal>
 </template>
@@ -141,6 +142,7 @@ export default {
   data() {
     return {
       isSalaryCard: false,
+      salaryCardBonus: 0.3,
 
       creditGoal: {name: 'Вторичное жилье', value: 10.4},
       goalItems: [
