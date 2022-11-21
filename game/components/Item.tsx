@@ -1,6 +1,5 @@
 import classes from "../styles/student.module.css";
 import React, {useState} from "react";
-import {headers} from "next/headers";
 
 interface IStyle {
     top: number;
@@ -61,7 +60,7 @@ export default function ({value, style}: IItem) {
                         element.parentElement!.style.top = `${y - window!.getBoundingClientRect().y - 10}px`;
                         element.parentElement!.style.left = `${x - window!.getBoundingClientRect().x - 10}px`;
                     }
-                    cells[i].id = 'checked';
+                    cells[i].classList.add('checked');
                 } else {
                     if (element.tagName === 'DIV') {
                         element.style.top = `${style.top}px`;

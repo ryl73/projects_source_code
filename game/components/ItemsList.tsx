@@ -6,6 +6,7 @@ interface IItemsList {
 
 export default function ({values}: IItemsList) {
     return (
+
         <div>
             {values.length === 2 &&
                 <div>

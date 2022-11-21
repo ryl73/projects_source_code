@@ -2,6 +2,7 @@ import classes from "../styles/student.module.css";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import ItemsList from "../components/ItemsList";
+import EndGameModal from "../components/UI/EndGameModal";
 
 export default function () {
     const router = useRouter();
@@ -16,6 +17,7 @@ export default function () {
 
     const [values, setValues] = useState<Array<any>>([]);
     const [sortedValues, setSortedValues] = useState<Array<any>>([]);
+    const [isModalActive, setIsModalActive] = useState(false);
 
     function setRandomBackground() {
         const index = getRandomIntInclusive(0, 3);
@@ -33,7 +35,7 @@ export default function () {
         let set = new Set();
         while (set.size < 5) set.add(Math.floor(Math.random() * (max - min + 1)) + min);
         const arr = Array.from(set);
-        const sortedArr = arr.sort((a, b) => {
+        const sortedArr = arr.sort((a: any, b: any) => {
             return (a - b);
         })
         setValues(arr);
@@ -61,6 +63,14 @@ export default function () {
         }
     }
 
+    function showEndGameModal() {
+        const checkedCells = document.querySelectorAll('.checked');
+        if (checkedCells.length === Number(queryParams.number) + 1) {
+            setIsModalActive(true);
+        }
+    }
+
+
     useEffect(() => {
         setRandomItemsArr();
     },[queryParams.values])
@@ -70,8 +80,8 @@ export default function () {
     }, [])
 
     return (
-        <div id="container" className={classes.container}>
-            <div className={classes.window}>
+        <div id="container" className={classes.container} >
+            <div className={classes.window} onClick={showEndGameModal}>
                 <div className={classes.items__wrapper}>
                     <ItemsList values={values} />
                 </div>
@@ -87,6 +97,7 @@ export default function () {
                     </div>
                 </div>
             </div>
+            <EndGameModal isModalActive={isModalActive}/>
         </div>
     )
 }
