@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Calculator</title>
+</head>
+<body>
+<div class="container">
+    <div class="switchBtns">
+        <button class="switchBtn active" id="calc">Калькулятор</button>
+        <button class="switchBtn" id="conv">Конвертер</button>
+    </div>
+    <div class="frame">
+        <div class="calculator">
+            <div class="history" id="history"></div>
+            <div class="output" id="output"></div>
+            <div class="btns">
+                <button class="btn" id="AC">AC</button>
+                <button class="btn" id="delete"><span id="deleteIcon" class="material-symbols-outlined">backspace</span></button>
+                <button class="btn operation colorful">%</button>
+                <button class="btn colorful" id="divide">÷</button>
+
+                <button class="btn digit">7</button>
+                <button class="btn digit">8</button>
+                <button class="btn digit">9</button>
+                <button class="btn colorful" id="multiply">×</button>
+
+                <button class="btn digit">4</button>
+                <button class="btn digit">5</button>
+                <button class="btn digit">6</button>
+                <button class="btn operation colorful">-</button>
+
+                <button class="btn digit">1</button>
+                <button class="btn digit">2</button>
+                <button class="btn digit">3</button>
+                <button class="btn operation colorful">+</button>
+
+                <button class="btn" id="brackets">()</button>
+                <button class="btn digit">0</button>
+                <button class="btn operation">.</button>
+                <button class="btn colorful" id="eval">=</button>
+            </div>
+        </div>
+        <div class="converter">
+            <select name="type" id="type" class="type">
+                <option value="length">Единицы длины</option>
+                <option value="square">Единицы площади</option>
+                <option value="currency">Валюты</option>
+            </select>
+            <div class="input__container">
+                <input type="number" id="inputFrom" style="width: 110px">
+                <select id="from"></select>
+            </div>
+            <div class="input__container">
+                <input type="number" id="inputTo" style="width: 110px" disabled>
+                <select id="to"></select>
+            </div>
+            <button id="executeBtn">Перевести</button>
+        </div>
+    </div>
+</div>
+
+<script src="src/index.js"></script>
+<script src="src/calculator.js"></script>
+<script src="src/converter.js"></script>
+</body>
+</html>
