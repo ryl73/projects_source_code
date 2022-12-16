@@ -1,12 +1,10 @@
-// @ts-ignore
-import Main from "../../src/pages/Main";
+import MainPage from "@/pages/MainPage.vue";
 import {createRouter, createWebHistory} from "vue-router";
-
 
 const routes = [
     {
         path: '/',
-        component: Main
+        component: MainPage
     },
 ]
 

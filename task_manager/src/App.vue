@@ -9,12 +9,15 @@
       @click="collapsed = true"
   />
   <div class="container" id="container" :class="[{'collapsed' : collapsed}]">
+    <nav-bar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import NavBar from "@/components/NavBar/NavBar";
   export default {
+    components: {NavBar},
     data() {
       return {
         menu: [
